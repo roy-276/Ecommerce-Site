@@ -36,6 +36,7 @@ function reducer(state, action) {
   }
 }
 export default function OrderScreen() {
+  //useContext return the current context value from Store.js
   const { state } = useContext(Store);
   const { userInfo } = state;
 
@@ -83,7 +84,6 @@ export default function OrderScreen() {
         toast.success('Order is paid');
       } catch (err) {
         dispatch({ type: 'PAY_FAIL', payload: getError(err) });
-        toast.error(getError(err));
       }
     });
   }
@@ -91,6 +91,7 @@ export default function OrderScreen() {
     toast.error(getError(err));
   }
 
+  //use effect to get data from the backend
   useEffect(() => {
     const fetchOrder = async () => {
       try {
